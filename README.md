@@ -1,6 +1,6 @@
 # 🎟️ College Event Management System 
 
-🚀 A full-featured backend system for managing college events, user registrations, and generating **QR-based PDF tickets** using **Node.js, Express, MongoDB, and Mongoose**.
+🚀 A full-featured system for managing college events, user registrations, and generating **QR-based PDF tickets** using **Node.js, Express, MongoDB, and Mongoose**.
 
 ---
 
