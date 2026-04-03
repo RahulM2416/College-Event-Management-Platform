@@ -12,5 +12,6 @@ app.use(express.json());
 
 app.use('/api/auth' , require('./routes/authRoutes'));
 app.use('/api/events', require('./routes/eventRoutes'));
+app.use("/api/register",require('./routes/registrationRoutes'));
 
 app.listen(3000, ()=>{console.log('Server running on port 3000')});
