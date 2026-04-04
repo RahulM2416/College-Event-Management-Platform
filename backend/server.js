@@ -4,10 +4,16 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 
 const app = express();
+app.use(cors());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  next();
+});
 
 connectDB();
 
-app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth' , require('./routes/authRoutes'));

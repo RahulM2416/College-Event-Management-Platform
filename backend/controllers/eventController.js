@@ -11,7 +11,7 @@ exports.createEvent = async (req,res)=>{
 
 exports.getEvents = async (req,res) => {
     try {
-        const events = await Event.find().populate('createdby','name email');
+        const events = await Event.find().populate('createdBy','name email');
         res.json(events);
     } catch(err){
         res.status(500).json({error: err.message});
