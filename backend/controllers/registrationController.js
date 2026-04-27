@@ -6,16 +6,21 @@ const QRCode = require('qrcode');
 exports.registerForEvent = async (req,res) => {
     try{
         const {eventId} = req.body;
+        console.log('Registration request:', { eventId, userId: req.user.id });
 
         const event = await Event.findById(eventId);
-        if(!event) return res.status(404).json({message: "Event not found"});
+        if(!event) {
+            console.log('Event not found:', eventId);
+            return res.status(404).json({message: "Event not found"});
+        }
 
         const existing = await Registration.findOne({
             user : req.user.id,
             event : eventId,
         });
         if(existing) {
-            res.status(400).json({message : "Already registered"});
+            console.log('Already registered');
+            return res.status(400).json({message : "Already registered"});
         }
 
         const registration = await Registration.create({
@@ -37,11 +42,11 @@ exports.registerForEvent = async (req,res) => {
         const doc = new PDFDocument();
 
         res.setHeader('Content-Type','application/pdf');
-        res.setHeader('Content-Disposition', `attachment; filename="${Date.now}"`);
+        res.setHeader('Content-Disposition', `attachment; filename="ticket-${Date.now()}.pdf"`);
         
         doc.pipe(res);
         doc.font("Courier");
-        const now = new Date().toLocaleString();
+        const now = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' });
         doc.fontSize(12).text(now,{align : "right"});
         doc.moveDown(2);
 
@@ -52,7 +57,7 @@ exports.registerForEvent = async (req,res) => {
         doc.moveDown(2);
 
         doc.fontSize(15).text(`Event : ${event.title}`);
-        doc.text(`Date : ${event.date}`);
+        doc.text(`Date : ${new Date(event.date).toLocaleDateString('en-US', { timeZone: 'Asia/Kolkata', dateStyle: 'medium' })}`);
         doc.text(`Location : ${event.location}`);
         doc.moveDown();
 
