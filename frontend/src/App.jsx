@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CalendarDays, Ticket, PlusCircle, LogOut } from "lucide-react";
 
-const API = "http://localhost:3000/api";
+const API = import.meta.env.VITE_API_URL;;
 
 export default function App() {
   const [events, setEvents] = useState([]);

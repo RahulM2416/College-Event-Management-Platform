@@ -1,0 +1,19 @@
+kubectl get pods : shows running containers
+kubectl get svc : list the services within a kubernetes cluster.
+kubectl scale deployment myapp --replicas=3 
+
+pod : smallest unit which contains the containers
+node : vm or physical machine
+cluster : group of nodes
+control plane : brain of kubernetes
+
+by enabling the kubernetes in docker desktop : it will create the local cluster
+
+kubelet - it is a node agent that runs on every node within a kubernetes cluster, and it ensures that the pods are running and healthy.
+kubectl - it used to control the kubernetes clusters
+
+service : it is used connect users to pod.
+pods are temporary and it gets the dynamic ip.
+
+clusterip : used for internal communication & accessible only inside cluster.
+
