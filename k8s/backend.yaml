@@ -20,9 +20,9 @@ spec:
             - containerPort: 3000
           env:
             - name: MONGO_DB_URL
-              value: "mongodb://rahulm6124_db_user:A0QLJCvoAAcPZRFk@ac-fagb9zm-shard-00-00.jt8qvha.mongodb.net:27017,ac-fagb9zm-shard-00-01.jt8qvha.mongodb.net:27017,ac-fagb9zm-shard-00-02.jt8qvha.mongodb.net:27017/mydb?ssl=true&replicaSet=atlas-935lc9-shard-0&authSource=admin&retryWrites=true&w=majority"
+              value: MONGO_VALUE
             - name: JWT_SECRET
-              value: "rahul@123"
+              value: JWT_VALUE
 ---
 apiVersion: v1
 kind: Service
